@@ -15,3 +15,5 @@ function selectionSortDesc(arr) {
     return arr;
 }
 console.log(selectionSortDesc())
+
+// same algorithm apply on if array element is charchater type
