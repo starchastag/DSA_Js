@@ -17,7 +17,7 @@ function insertionSort(arr) {
     return arr;
   }
   
- 
+ br
   const array = [12, 11, 13, 5, 6];
   console.log("Unsorted Array : ", array)
   console.log("Sorted array:", insertionSort(array));
