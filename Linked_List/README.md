@@ -33,7 +33,46 @@ Traversal:  Moving through the list to access each node's data.
 Search:     Finding a node containing specific data.
 
 
-               INSERT NODE : Javascript 
+
+________________________Creating a new node :
+
+
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    // Insert a new node at the beginning
+    insertAtBeginning(data) {
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+    }
+}
+__________________________> Displays the node:
+
+ display() {
+        let current = this.head;
+        let result = "";
+        while (current) {
+            result += current.data + " -> ";
+            current = current.next;
+        }
+        result += "NULL";
+        console.log(result);
+    }
+
+
+------------------------------------->
+
+               INSERT NEW NODE First : Javascript 
             
         constructor() {
         this.head = null;
@@ -83,3 +122,47 @@ display: Prints out the list in sequence.
         // Set the last node's `next` to the new node
         current.next = newNode;
     }
+
+
+------------------Inser Node at Mid ----
+
+To insert a node in the middle of a linked list in JavaScript, we need to define a function that will find the appropriate middle position and insert the new node there. Here’s an implementation that allows inserting at a specific position (index) in the list.
+
+If the specified position is greater than the length of the list, the node will be inserted at the end.
+
+-------------->
+insertAtPosition:
+                If position is 0 or less, the function inserts the node at the beginning.
+                If position is greater than the current length of the list, it will simply add the node at the end.
+                For positions within the list, it traverses until the target index and inserts the new node between previous and current nodes.
+display:         Displays the entire list to show the final structure.
+
+
+ // Insert a new node at a specified position
+    insertAtPosition(data, position) {
+        const newNode = new Node(data);
+
+        // If the position is at the beginning or the list is empty
+        if (position <= 0 || !this.head) {
+            this.insertAtBeginning(data);
+            return;
+        }
+
+        let current = this.head;
+        let previous = null;
+        let currentIndex = 0;
+
+        // Traverse the list to find the correct position
+        while (current && currentIndex < position) {
+            previous = current;
+            current = current.next;
+            currentIndex++;
+        }
+
+        // Insert the new node between previous and current nodes
+        newNode.next = current;
+        if (previous) {
+            previous.next = newNode;
+        }
+    }
+
